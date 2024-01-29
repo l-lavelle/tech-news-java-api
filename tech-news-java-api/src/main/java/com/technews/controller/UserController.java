@@ -7,7 +7,7 @@ import com.technews.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import java.util.List;
 
 @RestController
@@ -45,7 +45,7 @@ public class UserController {
     @PostMapping("/api/users")
     public User addUser(@RequestBody User user) {
         // Encrypt password
-
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         repository.save(user);
         return user;
     }
