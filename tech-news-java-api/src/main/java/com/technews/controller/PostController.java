@@ -31,7 +31,7 @@ public class PostController {
     }
     @GetMapping("/api/posts/{id}")
     public Post getPost(@PathVariable Integer id) {
-        Post returnPost = repository.getById(id);
+        Post returnPost = repository.getReferenceById(id);
         returnPost.setVoteCount(voteRepository.countVotesByPostId(returnPost.getId()));
         return returnPost;
     }
@@ -43,7 +43,7 @@ public class PostController {
     }
     @PutMapping("/api/posts/{id}")
     public Post updatePost(@PathVariable int id, @RequestBody Post post) {
-        Post tempPost = repository.getById(id);
+        Post tempPost = repository.getReferenceById(id);
         tempPost.setTitle(post.getTitle());
         return repository.save(tempPost);
     }
@@ -55,7 +55,7 @@ public class PostController {
             User sessionUser = (User) request.getSession().getAttribute("SESSION_USER");
             vote.setUserId(sessionUser.getId());
             voteRepository.save(vote);
-            returnPost = repository.getById(vote.getPostId());
+            returnPost = repository.getReferenceById(vote.getPostId());
             returnPost.setVoteCount(voteRepository.countVotesByPostId(vote.getPostId()));
             returnValue = "";
         } else {
