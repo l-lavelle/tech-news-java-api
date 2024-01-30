@@ -50,6 +50,7 @@ public class UserController {
         return user;
     }
 
+    // Update doesn't work unless all fields filled out and doesn't bcrypt password
     @PutMapping("/api/users/{id}")
     public User updateUser(@PathVariable int id, @RequestBody User user) {
         User tempUser = repository.getReferenceById(id);
