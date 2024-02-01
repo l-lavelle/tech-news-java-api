@@ -1,3 +1,7 @@
+// Update doesn't work unless all fields filled out
+// How to validate, if id doesn't exist and throw errors
+// Need to create login
+
 package com.technews.controller;
 
 import com.technews.models.Post;
@@ -6,6 +10,7 @@ import com.technews.repository.UserRepository;
 import com.technews.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import java.util.List;
@@ -50,17 +55,27 @@ public class UserController {
         return user;
     }
 
-    // Update doesn't work unless all fields filled out and doesn't bcrypt password
     @PutMapping("/api/users/{id}")
     public User updateUser(@PathVariable int id, @RequestBody User user) {
         User tempUser = repository.getReferenceById(id);
 
-        if (!tempUser.equals(null)) {
-            user.setId(tempUser.getId());
-            repository.save(user);
-        }
-        return user;
+        tempUser.setUsername(user.getUsername());
+        tempUser.setEmail(user.getEmail());
+        tempUser.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        repository.save(tempUser);
+        return tempUser;
     }
+
+//    @PutMapping("/api/users/login")
+//    public User login(@PathVariable int id, @RequestBody User user) {
+//        User tempUser = repository.getReferenceById(id);
+//
+//        tempUser.setUsername(user.getUsername());
+//        tempUser.setLoggedIn(true);
+//        tempUser.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+//        repository.save(tempUser);
+//        return tempUser;
+//    }
 
     @DeleteMapping("/api/users/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
