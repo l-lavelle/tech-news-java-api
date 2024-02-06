@@ -1,6 +1,6 @@
 // Update doesn't work unless all fields filled out
 // How to validate, if id doesn't exist and throw errors
-// Need to create login
+// Need to create login- transient value see if can figure out springboot session without security
 
 package com.technews.controller;
 
@@ -67,11 +67,11 @@ public class UserController {
     }
 
 //    @PutMapping("/api/users/login")
-//    public User login(@PathVariable int id, @RequestBody User user) {
-//        User tempUser = repository.getReferenceById(id);
-//
+//    public User login( @RequestBody User user) throws Exception {
+//        User tempUser = repository.findUserByEmail(user.getEmail());
+//        tempUser.setLoggedIn(user.isLoggedIn());
 //        tempUser.setUsername(user.getUsername());
-//        tempUser.setLoggedIn(true);
+//        tempUser.setEmail(user.getEmail());
 //        tempUser.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
 //        repository.save(tempUser);
 //        return tempUser;
