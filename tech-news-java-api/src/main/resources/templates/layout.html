@@ -14,11 +14,11 @@
         </h1>
         <nav>
             <div th:if="${loggedIn}">
-                <a th:href="@{/dashboard}">dashboard</a>
-                <a th:href="@{/users/logout}">logout</a>
+                <a th:href="@{/dashboard}">Dashboard</a>
+                <a th:href="@{/users/logout}">Logout</a>
             </div>
             <div th:unless="${loggedIn}">
-                <a th:href="@{/login}">login</a>
+                <a th:href="@{/login}">Login</a>
             </div>
         </nav>
     </header>

@@ -8,9 +8,8 @@ event.preventDefault();
   const response = await fetch(`/api/posts/${id}`, {
     method: 'DELETE'
   });
-//console.log(response)
-//console.log(response.ok)
-// document.location.replace('/dashboard')
+
+
   if (response.ok) {
     document.location.replace('/dashboard')
   } else {

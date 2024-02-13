@@ -4,11 +4,12 @@
       layout:decorate="~{layout}">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
 
-<div layout:fragment="content">
+<div layout:fragment="content" class="login-signup">
 
     <div th:if="${notice}" class="flash-message">
         <h3>[[${notice}]]</h3>
