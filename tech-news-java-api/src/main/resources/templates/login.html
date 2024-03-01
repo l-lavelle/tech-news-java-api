@@ -14,18 +14,21 @@
     <div th:if="${notice}" class="flash-message">
         <h3>[[${notice}]]</h3>
     </div>
-
+<div class="signup-login-content">
     <form action="#" th:action="@{/users/login}" th:object="${user}" method="post" class="login-form">
         <div>
-            <label>email:</label>
-            <input type="text" th:field="*{email}"/>
+            <p class="signup-login-header">Login</p>
         </div>
         <div>
-            <label>password:</label>
-            <input type="password" th:field="*{password}"/>
+            <label class="signup-login-text">Email:</label>
+            <input class="signup-login-input" type="text" th:field="*{email}"/>
         </div>
         <div>
-            <button type="submit">login</button>
+            <label class="signup-login-text">Password:</label>
+            <input class="signup-login-input" type="password" th:field="*{password}"/>
+        </div>
+        <div class="btn-center">
+            <button class="button-24" type="submit">Login</button>
         </div>
     </form>
 
@@ -33,21 +36,25 @@
 
     <form action="#" th:action="@{/users}" th:object="${user}" method="post" class="signup-form">
         <div>
-            <label>username:</label>
-            <input type="text" th:field="*{username}"/>
+            <p class="signup-login-header">Signup</p>
         </div>
         <div>
-            <label>email:</label>
-            <input type="text" th:field="*{email}"/>
+            <label class="signup-login-text">Username:</label>
+            <input class="signup-login-input" type="text" th:field="*{username}"/>
         </div>
         <div>
-            <label>password:</label>
-            <input type="password" th:field="*{password}"/>
+            <label class="signup-login-text">Email:</label>
+            <input class="signup-login-input" type="text" th:field="*{email}"/>
         </div>
         <div>
-            <button type="submit">signup</button>
+            <label class="signup-login-text">Password:</label>
+            <input class="signup-login-input" type="password" th:field="*{password}"/>
+        </div>
+        <div class="btn-center">
+            <button class="button-24" type="submit">Signup</button>
         </div>
     </form>
+</div>
 </div>
 
 </body>
