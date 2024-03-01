@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Just Tech News</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/layout.css">
+<!--    <link rel="stylesheet" href="/css/style.css">-->
 </head>
 <body>
 <div class="wrapper">
     <header>
         <h1>
-            <a href="/">Just Tech News</a>
+            <a class="nav-link" href="/">Just Tech News</a>
         </h1>
         <nav>
             <div th:if="${loggedIn}">
-                <a th:href="@{/dashboard}">Dashboard</a>
-                <a th:href="@{/users/logout}">Logout</a>
+                <a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
+                <a class="nav-link" th:href="@{/users/logout}">Logout</a>
             </div>
             <div th:unless="${loggedIn}">
-                <a th:href="@{/login}">Login</a>
+                <a class="nav-link" th:href="@{/login}">Login</a>
             </div>
         </nav>
     </header>
