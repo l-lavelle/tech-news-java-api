@@ -23,12 +23,11 @@
    font-family:Trebuchet MS, sans-serif;
 }
 .signup-login-text{
-    margin-bottom:10px;
-    margin-top:15px;
     font-size:1.5em;
     font-family:Trebuchet MS, sans-serif;
 }
 .signup-login-input{
+    margin-bottom:10px;
     width: 100%;
     color: rgb(36, 35, 42);
     font-size: 16px;
