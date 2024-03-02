@@ -45,7 +45,9 @@ public class PostController {
     public Post updatePost(@PathVariable int id, @RequestBody Post post) {
         Post tempPost = repository.getReferenceById(id);
         tempPost.setTitle(post.getTitle());
-        return repository.save(tempPost);
+        tempPost.setPostText(post.getPostText());
+        repository.save(tempPost);
+        return tempPost;
     }
     @PutMapping("/api/posts/upvote")
     public String addVote(@RequestBody Vote vote, HttpServletRequest request) {

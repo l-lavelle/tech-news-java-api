@@ -4,6 +4,8 @@
       layout:decorate="~{layout}">
 <head>
     <title>Edit Post</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/editPost.css">
 </head>
 
 <body>
@@ -14,49 +16,37 @@
         <h3>[[${notice}]]</h3>
     </div>
 
-    <a th:href="@{/dashboard}"> &larr; Back to dashboard</a>
+    <a th:href="@{/dashboard}" class="dash-link"> &larr; Back to dashboard</a>
     <h2>
         Edit Post
     </h2>
 
     <form action="#" th:action="@{/posts/{id}(id=${post.id})}" th:object="${post}" method="post" class="edit-post-form">
         <div>
-            <input type="text" th:field="*{title}"/>
+            <input id="edit-title" type="text" th:field="*{title}"/>
             <span th:text="${#strings.replace(post.postUrl,'http://','')}"></span>
+            <textarea id="edit-postText" type="text" th:field="*{postText}"></textarea>
         </div>
         <div th:if="${post.voteCount == 1}" class="meta">
             [[${post.voteCount}]] point by [[${post.userName}]] on
             <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
             |
-            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]] comment</a>
-            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]] comments</a>
+            <p  th:if="${post.comments.size() == 1}">[[${post.comments.size()}]] comment</p>
+            <p  th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]] comments</p>
         </div>
         <div th:unless="${post.voteCount == 1}" class="meta">
             [[${post.voteCount}]] points by [[${post.userName}]] on
             <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
             |
-            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]] comment</a>
-            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]] comments</a>
+            <p  th:if="${post.comments.size() == 1}">[[${post.comments.size()}]] comment</p>
+            <p  th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]] comments</p>
         </div>
-        <button type="submit">Edit post title</button>
+        <div class="edit-btns">
+        <button type="submit" class="edit-post">Edit post</button>
         <button type="button" class="delete-post-btn">Delete post</button>
-    </form>
-
-
-    <form action="#" th:action="@{/comments/edit}" th:object="${comment}" method="post" class="comment-form">
-        <div>
-            <input type="hidden" th:value="${post.id}" name="postId"/>
-            <textarea name="comment-body" th:field="*{commentText}"></textarea>
-        </div>
-
-        <div>
-            <button type="submit">add comment</button>
         </div>
     </form>
 
-    <div class="comments">
-        <div th:insert="fragments/comment-fragment :: comment-fragment"></div>
-    </div>
 
     <div th:if="${loggedIn}">
         <script src="/js/delete-post.js"></script>
