@@ -1,0 +1,102 @@
+div{
+  font-family:var(--font);
+   line-height:1.4;
+}
+label{
+  font-family:var(--font);
+  font-size:1.1em;
+}
+p{
+   margin:0;
+}
+.dash-layout{
+  margin:20px
+}
+.create-input{
+    display:block;
+    width: 95%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    margin-bottom:10px;
+}
+#post-text{
+    width: 95%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    margin-bottom:10px;
+}
+#createPost-btn{
+margin-top: 10px;
+  background: var(--darkOrange);
+  border: 1px solid var(--lightOrange);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+#createPost-btn:hover,
+#createPost-btn:active{
+  background-color: var(--white);
+  background-position: 0 0;
+  color: var(--darkOrange);
+}
+#createPost-btn:active {
+  opacity: .5;
+}
+.yourPost-list{
+    list-style-type: none;
+    border-bottom: 5px solid var(--darkOrange);
+    margin-bottom:15px;
+    margin-right:40px;
+}
+.post-Title{
+    text-decoration:none;
+    font-family:var(--font);
+    font-size:1.3em;
+    font-weight: bold;
+    color:black;
+}
+.post-Title:hover{
+  text-shadow: 0 0 5px var(--lightOrange);
+}
+.url-link{
+ text-decoration:none;
+ font-family:var(--font);
+ color:var(--darkOrange)
+}
+.url-link:hover,
+.edit-link:hover{
+ font-weight:bold;
+}
+.edit-link{
+   text-decoration:none;
+   font-family:var(--font);
+   color:var(--darkOrange)
+}
