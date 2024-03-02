@@ -1,5 +1,5 @@
 <!--th:href="@{ ${post.postUrl} }"-->
-<!--title link is opening new window?-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
@@ -12,22 +12,29 @@
 
 <article class="post" th:fragment="post-fragment">
     <div class="title">
-        <a class="post-Title" th:href="@{/post/{id}(id=${post.id})}" target="_blank">[[${post.title}]]</a>
+        <a class="post-Title" th:href="@{/post/{id}(id=${post.id})}">[[${post.title}]]</a>
+
+        <div th:if="${post.postText}">
+        <p  th:href="@{ ${post.postText} }" target="_blank">[[${post.postText}]]</p>
+        </div>
+        <div th:unless="${post.postText}">
+        </div>
+
         <div th:if="${#strings.contains(post.postUrl, 'http://')}">
             <div th:with="arg=${#strings.replace(post.postUrl,'http://','')}">
                 <div th:if="${#strings.contains(arg, '/')}">
                     <div th:with="arg2=${#strings.arraySplit(arg, '/')}">
-                        <span th:text="${#strings.toString(arg2[0])}"></span>
+                        <a th:href="@{ ${post.postUrl} }"> [[${#strings.toString(arg2[0])}]]</a>
                     </div>
                 </div>
                 <div th:unless="${#strings.contains(arg, '/')}">
                     <div th:if="${#strings.contains(arg, '?')}">
                         <div th:with="arg2=${#strings.arraySplit(arg, '?')}">
-                            <span th:text="${#strings.toString(arg2[0])}"></span>
+                            <a th:href="@{ ${post.postUrl} }"> [[${#strings.toString(arg2[0])}]]</a>
                         </div>
                     </div>
                     <div th:unless="${#strings.contains(arg, '?')}">
-                        <span th:text="${#strings.toString(arg)}"></span>
+                        <a th:href="@{ ${post.postUrl} }"> [[${#strings.toString(arg)}]]</a>
                     </div>
                 </div>
             </div>
@@ -37,26 +44,20 @@
             <div th:with="arg=${#strings.replace(post.postUrl,'https://','')}">
                 <div th:if="${#strings.contains(arg, '/')}">
                     <div th:with="arg2=${#strings.arraySplit(arg, '/')}">
-                        <span th:text="${#strings.toString(arg2[0])}"></span>
+                        <a th:href="@{ ${post.postUrl} }"> [[${#strings.toString(arg2[0])}]]</a>
                     </div>
                 </div>
                 <div th:unless="${#strings.contains(arg, '/')}">
                     <div th:if="${#strings.contains(arg, '?')}">
                         <div th:with="arg2=${#strings.arraySplit(arg, '?')}">
-                            <span th:text="${#strings.toString(arg2[0])}"></span>
+                            <a th:href="@{ ${post.postUrl} }">[[${#strings.toString(arg2[0])}]]</a>
                         </div>
                     </div>
                     <div th:unless="${#strings.contains(arg, '?')}">
-                        <span th:text="${#strings.toString(arg)}"></span>
+                        <a th:href="@{ ${post.postUrl} }">[[${#strings.toString(arg)}]]</a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div th:if="${post.postText}">
-        <p  th:href="@{ ${post.postText} }" target="_blank">[[${post.postText}]]</p>
-        </div>
-        <div th:unless="${post.postText}">
         </div>
 
         <div class="points-design">
