@@ -1,9 +1,22 @@
 :root{
     --font:Trebuchet MS, sans-serif;
-    --lightOrange:#FFAE9D
+    --lightOrange:#FFAE9D;
+    --darkOrange:#FF4742;
+}
+div{
+    font-family:var(--font);
+    line-height:1.3;
+}
+p{
+    margin:0
 }
 .list-design{
     list-style-type: none;
+}
+.post{
+      border-bottom: 5px solid var(--darkOrange);
+      margin-bottom:20px;
+      margin-right:50px;
 }
 .post-Title{
     text-decoration:none;
@@ -16,5 +29,5 @@
   text-shadow: 0 0 5px var(--lightOrange);
 }
 .points-design{
-    margin-bottom:15px;
+    margin-bottom:20px;
 }

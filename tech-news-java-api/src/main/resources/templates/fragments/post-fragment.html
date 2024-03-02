@@ -1,3 +1,5 @@
+<!--th:href="@{ ${post.postUrl} }"-->
+<!--title link is opening new window?-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
@@ -10,7 +12,7 @@
 
 <article class="post" th:fragment="post-fragment">
     <div class="title">
-        <a class="post-Title" th:href="@{ ${post.postUrl} }" target="_blank">[[${post.title}]]</a>
+        <a class="post-Title" th:href="@{/post/{id}(id=${post.id})}" target="_blank">[[${post.title}]]</a>
         <div th:if="${#strings.contains(post.postUrl, 'http://')}">
             <div th:with="arg=${#strings.replace(post.postUrl,'http://','')}">
                 <div th:if="${#strings.contains(arg, '/')}">
@@ -50,45 +52,31 @@
                 </div>
             </div>
         </div>
+
+        <div th:if="${post.postText}">
         <p  th:href="@{ ${post.postText} }" target="_blank">[[${post.postText}]]</p>
-<!--        <div th:if="${#strings.contains(post.postUrl, 'www.')}">-->
-<!--            <div th:with="arg=${#strings.replace(post.postUrl,'www.','')}">-->
-<!--                <div th:if="${#strings.contains(arg, '/')}">-->
-<!--                    <div th:with="arg2=${#strings.arraySplit(arg, '/')}">-->
-<!--                        <span th:text="${#strings.toString(arg2[0])}"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div th:unless="${#strings.contains(arg, '/')}">-->
-<!--                    <div th:if="${#strings.contains(arg, '?')}">-->
-<!--                        <div th:with="arg2=${#strings.arraySplit(arg, '?')}">-->
-<!--                            <span th:text="${#strings.toString(arg2[0])}"></span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div th:unless="${#strings.contains(arg, '?')}">-->
-<!--                        <span th:text="${#strings.toString(arg)}"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        </div>
+        <div th:unless="${post.postText}">
+        </div>
 
         <div class="points-design">
         <div th:if="${post.voteCount == 1}" class="meta">
             [[${post.voteCount}]] point by [[${post.userName}]] on
             <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
 
-            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
-                comment</a>
-            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
-                comments</a>
+            <p  th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comment</p>
+            <p  th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comments</p>
         </div>
         <div th:unless="${post.voteCount == 1}" class="meta">
             [[${post.voteCount}]] points by [[${post.userName}]] on
             <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
             |
-            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
-                comment</a>
-            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
-                comments</a>
+            <p  th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comment</p>
+            <p  th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comments</p>
         </div>
         </div>
     </div>
