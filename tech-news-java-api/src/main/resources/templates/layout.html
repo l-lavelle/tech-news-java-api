@@ -15,7 +15,7 @@
         <nav>
             <div th:if="${loggedIn}">
                 <a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
-                <a class="nav-link" th:href="@{/users/logout}">Logout</a>
+                <a id="logout-nav" class="nav-link" th:href="@{/users/logout}">Logout</a>
             </div>
             <div th:unless="${loggedIn}">
                 <a class="nav-link" th:href="@{/login}">Login</a>

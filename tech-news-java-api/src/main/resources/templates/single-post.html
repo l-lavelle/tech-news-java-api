@@ -4,7 +4,10 @@
       layout:decorate="~{layout}">
 <head>
     <title>Single-post</title>
-
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/postFragment.css">
+    <link rel="stylesheet" href="/css/singlePost.css">
+    <link rel="stylesheet" href="/css/commentFragment.css">
 </head>
 
 <body>
@@ -15,28 +18,33 @@
         <h3>[[${notice}]]</h3>
     </div>
 
+    <div id="single-post-display">
     <div th:insert="fragments/post-fragment :: post-fragment"></div>
 
 
     <form th:if="${loggedIn}" action="#" th:action="@{/comments}" th:object="${comment}" method="post" class="comment-form">
         <div>
+            <button type="button" class="upvote-btn">Upvote</button>
+        </div>
+        <div>
             <input type="hidden" th:value="${post.id}" name="postId"/>
-            <textarea name="comment-body" th:field="*{commentText}"></textarea>
+            <textarea class="comment-textArea" name="comment-body" th:field="*{commentText}"></textarea>
         </div>
 
         <div>
-            <button type="submit">add comment</button>
-            <button type="button" class="upvote-btn">upvote</button>
+            <button class="add-comment-btn" type="submit">Comment</button>
         </div>
     </form>
-
+    <p class="singlePost-comment">
+        Comments
+    </p>
     <div class="comments">
         <div th:insert="fragments/comment-fragment :: comment-fragment"></div>
     </div>
     <div th:if="${loggedIn}">
         <script src="/js/upvote.js"></script>
     </div>
-
+    </div>
 </div>
 
 </body>

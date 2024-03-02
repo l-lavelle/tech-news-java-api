@@ -1,8 +1,3 @@
-:root{
-    --font:Trebuchet MS, sans-serif;
-    --lightOrange:#FFAE9D;
-    --darkOrange:#FF4742;
-}
 div{
     font-family:var(--font);
     line-height:1.4;
@@ -27,6 +22,14 @@ p{
 }
 .post-Title:hover{
   text-shadow: 0 0 5px var(--lightOrange);
+}
+.url-link{
+ text-decoration:none;
+ font-family:var(--font);
+ color:var(--darkOrange)
+}
+.url-link:hover{
+ font-weight:bold;
 }
 .points-design{
     margin-bottom:20px;

@@ -1,6 +1,4 @@
-:root {
-  --white: #ffffff;
-}
+
 .login-signup{
     margin-top:50px;
     margin-bottom:50px;
@@ -12,7 +10,7 @@
 }
 .login-form,
 .signup-form{
-  background:#FFAE9D;
+  background:var(--lightOrange);
   padding:5%;
   border-radius: 25px;
 }
@@ -23,11 +21,11 @@
    font-size:2em;
    text-decoration:underline;
    text-align:center;
-   font-family:Trebuchet MS, sans-serif;
+   font-family:var(--font);
 }
 .signup-login-text{
     font-size:1.5em;
-    font-family:Trebuchet MS, sans-serif;
+    font-family:var(--font);
 }
 .signup-login-input{
     margin-bottom:10px;
@@ -54,8 +52,8 @@
 }
 .button-24 {
   margin-top: 10px;
-  background: #FF4742;
-  border: 1px solid #FF4742;
+  background: var(--darkOrange);
+  border: 1px solid var(--lightOrange);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
@@ -79,9 +77,9 @@
 }
 .button-24:hover,
 .button-24:active {
-  background-color: #FFFFFF;
+  background-color: var(--white);
   background-position: 0 0;
-  color: #FF4742;
+  color: var(--darkOrange);
 }
 .button-24:active {
   opacity: .5;

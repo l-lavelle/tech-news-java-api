@@ -19,6 +19,9 @@ header {
 header h1 {
   font-size: 1.4em;
 }
+#logout-nav{
+    margin-left:10px;
+}
 .nav-link{
     font-family:Trebuchet MS, sans-serif;
     color:black;

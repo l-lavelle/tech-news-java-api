@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Just Tech News</title>
-
+    <link rel="stylesheet" href="/css/commentFragment.css">
 </head>
 <body>
 
 <section th:each="comment : ${commentList}" class="comment" th:fragment="comment-fragment">
+    <div class="text">
+        [[${comment.commentText}]]
+    </div>
     <div class="meta">
         [[${post.userName}]] on
         <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
     </div>
-    <div class="text">
-        [[${comment.commentText}]]
-    </div>
+
 </section>
 
 </body>
