@@ -2,16 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <title>Homepage</title>
+    <link rel="stylesheet" href="/css/postFragment.css">
 </head>
 
 <body>
 
 <div layout:fragment="content">
-    <ol>
-        <li th:each="post : ${postList}" class="post-list">
-            <div th:insert="fragments/post-fragment :: post-fragment"></div>
-        </li>
-    </ol>
+    <ul class="list-design">
+    <li th:each="post : ${postList}" class="post-list">
+        <div th:insert="fragments/post-fragment :: post-fragment"></div>
+    </li>
+    </ul>
 </div>
 
 </body>

@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Just Tech News</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/postFragment.css">
 </head>
 <body>
 
 <article class="post" th:fragment="post-fragment">
     <div class="title">
-        <a th:href="@{ ${post.postUrl} }" target="_blank">[[${post.title}]]</a>
-
+        <a class="post-Title" th:href="@{ ${post.postUrl} }" target="_blank">[[${post.title}]]</a>
         <div th:if="${#strings.contains(post.postUrl, 'http://')}">
             <div th:with="arg=${#strings.replace(post.postUrl,'http://','')}">
                 <div th:if="${#strings.contains(arg, '/')}">
@@ -51,27 +50,28 @@
                 </div>
             </div>
         </div>
+        <p  th:href="@{ ${post.postText} }" target="_blank">[[${post.postText}]]</p>
+<!--        <div th:if="${#strings.contains(post.postUrl, 'www.')}">-->
+<!--            <div th:with="arg=${#strings.replace(post.postUrl,'www.','')}">-->
+<!--                <div th:if="${#strings.contains(arg, '/')}">-->
+<!--                    <div th:with="arg2=${#strings.arraySplit(arg, '/')}">-->
+<!--                        <span th:text="${#strings.toString(arg2[0])}"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div th:unless="${#strings.contains(arg, '/')}">-->
+<!--                    <div th:if="${#strings.contains(arg, '?')}">-->
+<!--                        <div th:with="arg2=${#strings.arraySplit(arg, '?')}">-->
+<!--                            <span th:text="${#strings.toString(arg2[0])}"></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div th:unless="${#strings.contains(arg, '?')}">-->
+<!--                        <span th:text="${#strings.toString(arg)}"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div th:if="${#strings.contains(post.postUrl, 'www.')}">
-            <div th:with="arg=${#strings.replace(post.postUrl,'www.','')}">
-                <div th:if="${#strings.contains(arg, '/')}">
-                    <div th:with="arg2=${#strings.arraySplit(arg, '/')}">
-                        <span th:text="${#strings.toString(arg2[0])}"></span>
-                    </div>
-                </div>
-                <div th:unless="${#strings.contains(arg, '/')}">
-                    <div th:if="${#strings.contains(arg, '?')}">
-                        <div th:with="arg2=${#strings.arraySplit(arg, '?')}">
-                            <span th:text="${#strings.toString(arg2[0])}"></span>
-                        </div>
-                    </div>
-                    <div th:unless="${#strings.contains(arg, '?')}">
-                        <span th:text="${#strings.toString(arg)}"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <div class="points-design">
         <div th:if="${post.voteCount == 1}" class="meta">
             [[${post.voteCount}]] point by [[${post.userName}]] on
             <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
@@ -89,6 +89,7 @@
                 comment</a>
             <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
                 comments</a>
+        </div>
         </div>
     </div>
 </article>

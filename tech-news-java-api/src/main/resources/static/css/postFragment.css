@@ -1,0 +1,20 @@
+:root{
+    --font:Trebuchet MS, sans-serif;
+    --lightOrange:#FFAE9D
+}
+.list-design{
+    list-style-type: none;
+}
+.post-Title{
+    text-decoration:none;
+    font-family:var(--font);
+    font-size:1.3em;
+    font-weight: bold;
+    color:black;
+}
+.post-Title:hover{
+  text-shadow: 0 0 5px var(--lightOrange);
+}
+.points-design{
+    margin-bottom:15px;
+}

@@ -17,6 +17,7 @@ public class Post implements Serializable {
     private Integer id;
     private String title;
     private String postUrl;
+    private String postText;
     @Transient
     private String userName;
     @Transient
@@ -38,12 +39,13 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(Integer id, String title, String postUrl, int voteCount, Integer userId) {
+    public Post(Integer id, String title, String postUrl, int voteCount, Integer userId, String postText) {
         this.id = id;
         this.title = title;
         this.postUrl = postUrl;
         this.voteCount = voteCount;
         this.userId = userId;
+        this.postText = postText;
     }
 
     public Integer getId() {
@@ -53,6 +55,10 @@ public class Post implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getPostText(){return postText;}
+
+    public void setPostText(String postText){this.postText=postText;}
 
     public String getTitle() {
         return title;
@@ -123,12 +129,12 @@ public class Post implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return voteCount == post.voteCount && Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(postUrl, post.postUrl) && Objects.equals(userName, post.userName) && Objects.equals(userId, post.userId) && Objects.equals(postedAt, post.postedAt) && Objects.equals(updatedAt, post.updatedAt) && Objects.equals(comments, post.comments);
+        return voteCount == post.voteCount && Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(postUrl, post.postUrl) && Objects.equals(postText, post.postText) && Objects.equals(userName, post.userName) && Objects.equals(userId, post.userId) && Objects.equals(postedAt, post.postedAt) && Objects.equals(updatedAt, post.updatedAt) && Objects.equals(comments, post.comments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, postUrl, userName, voteCount, userId, postedAt, updatedAt, comments);
+        return Objects.hash(id, title, postUrl, postText, userName, voteCount, userId, postedAt, updatedAt, comments);
     }
 
     @Override
@@ -137,6 +143,7 @@ public class Post implements Serializable {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", postUrl='" + postUrl + '\'' +
+                ", postText='" + postText + '\'' +
                 ", userName='" + userName + '\'' +
                 ", voteCount=" + voteCount +
                 ", userId=" + userId +
@@ -145,4 +152,32 @@ public class Post implements Serializable {
                 ", comments=" + comments +
                 '}';
     }
+
+    //    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Post post = (Post) o;
+//        return voteCount == post.voteCount && Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(postUrl, post.postUrl) && Objects.equals(userName, post.userName) && Objects.equals(userId, post.userId) && Objects.equals(postedAt, post.postedAt) && Objects.equals(updatedAt, post.updatedAt) && Objects.equals(comments, post.comments);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, title, postUrl, userName, voteCount, userId, postedAt, updatedAt, comments);
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Post{" +
+//                "id=" + id +
+//                ", title='" + title + '\'' +
+//                ", postUrl='" + postUrl + '\'' +
+//                ", userName='" + userName + '\'' +
+//                ", voteCount=" + voteCount +
+//                ", userId=" + userId +
+//                ", postedAt=" + postedAt +
+//                ", updatedAt=" + updatedAt +
+//                ", comments=" + comments +
+//                '}';
+//    }
 }
