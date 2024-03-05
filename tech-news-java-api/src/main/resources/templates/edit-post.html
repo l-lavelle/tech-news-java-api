@@ -21,7 +21,8 @@
         Edit Post
     </h2>
 
-    <form action="#" th:action="@{/posts/{id}(id=${post.id})}" th:object="${post}" method="post" class="edit-post-form">
+<!--    th:action="@{/posts/{id}(id=${post.id})}"  method="post" -->
+    <form  th:object="${post}"  class="edit-post-form" >
         <div>
             <input id="edit-title" type="text" th:field="*{title}"/>
             <span th:text="${#strings.replace(post.postUrl,'http://','')}"></span>
@@ -42,13 +43,14 @@
             <p  th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]] comments</p>
         </div>
         <div class="edit-btns">
-        <button type="submit" class="edit-post">Edit post</button>
+        <button type="button" class="edit-post">Edit post</button>
         <button type="button" class="delete-post-btn">Delete post</button>
         </div>
     </form>
 
 
     <div th:if="${loggedIn}">
+        <script src="/js/edit-post.js"></script>
         <script src="/js/delete-post.js"></script>
     </div>
 </div>
