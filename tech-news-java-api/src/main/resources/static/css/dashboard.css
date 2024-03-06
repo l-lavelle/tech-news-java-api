@@ -1,4 +1,4 @@
-div{
+div, textarea, input{
   font-family:var(--font);
    line-height:1.4;
 }
@@ -83,7 +83,6 @@ margin-top: 10px;
     padding-bottom:20px;
     margin-right:50px;
 }
-
 .post-Title{
     text-decoration:none;
     font-family:var(--font);
@@ -99,12 +98,15 @@ margin-top: 10px;
  font-family:var(--font);
  color:var(--darkOrange)
 }
-.url-link:hover,
-.edit-link:hover{
+.url-link:hover{
  font-weight:bold;
+}
+.edit-link:hover{
+    color: #00008B
 }
 .edit-link{
    text-decoration:none;
    font-family:var(--font);
-   color:var(--darkOrange)
+   color:var(--darkOrange);
+   font-weight:bold;
 }
