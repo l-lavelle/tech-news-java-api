@@ -18,12 +18,12 @@ async function editPostHandler(event) {
       'Content-Type': 'application/json'
     }
   });
-//
-//  if (response.ok) {
-//    document.location.reload();
-//  } else {
-//    alert(response.statusText);
-//  }
+
+  if (response.ok) {
+    document.location.replace("/dashboard");
+  } else {
+    alert(response.statusText);
+  }
 }
 
 document.querySelector('.edit-post').addEventListener('click', editPostHandler);
