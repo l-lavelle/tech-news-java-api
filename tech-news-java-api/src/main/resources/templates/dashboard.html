@@ -35,17 +35,17 @@
             <button id="createPost-btn" type="submit" class="btn">Create</button>
         </form>
     </section>
-
+    </div>
     <section th:if="${postList.size() > 0}">
-        <h2>Your Posts</h2>
-        <ul >
+        <h2 id="yourPost-header">Your Posts</h2>
+        <ul class="yourPost-ul">
             <li class="yourPost-list" th:each="post : ${postList}">
                 <div th:insert="fragments/post-fragment :: post-fragment"></div>
-                <a th:href="@{/dashboard/edit/{id}(id=${post.id})}" class="edit-link">Edit post</a>
+                <a th:href="@{/dashboard/edit/{id}(id=${post.id})}" class="edit-link">Edit</a>
             </li>
         </ul>
     </section>
-    </div>
+
 </div>
 
 

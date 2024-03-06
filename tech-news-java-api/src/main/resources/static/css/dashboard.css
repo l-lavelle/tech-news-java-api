@@ -70,12 +70,20 @@ margin-top: 10px;
 #createPost-btn:active {
   opacity: .5;
 }
-.yourPost-list{
-    list-style-type: none;
-    border-bottom: 5px solid var(--darkOrange);
-    margin-bottom:15px;
-    margin-right:40px;
+#yourPost-header{
+    margin-left:20px;
+    margin-right:20px
 }
+.yourPost-ul{
+    list-style-type: none;
+}
+.yourPost-list{
+    border-bottom: 5px solid var(--darkOrange);
+    margin-bottom:20px;
+    padding-bottom:20px;
+    margin-right:50px;
+}
+
 .post-Title{
     text-decoration:none;
     font-family:var(--font);
